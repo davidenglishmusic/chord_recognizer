@@ -1,3 +1,5 @@
+require 'chord'
+
 class Theorist
   PITCH_NUMBER_MAP =
     {
@@ -38,5 +40,16 @@ class Theorist
 
   def self.pitch_to_number(pitch)
     PITCH_NUMBER_MAP[pitch]
+  end
+
+  def self.create_chord(pitches)
+    pitch_numbers = pitches.map do |pitch|
+      unless pitch.is_a? Integer
+        pitch_to_number(pitch)
+      else
+        pitch
+      end
+    end
+    Chord.new(pitch_numbers.uniq.sort)
   end
 end
