@@ -21,7 +21,7 @@ RSpec.describe Theorist do
     end
 
     it 'creates a chord with no duplicate pitches' do
-      expect(Theorist.create_chord(['c', 0]).pitches).to eql([0])
+      expect(Theorist.create_chord(['c', 0]).pitches).to match_array([0])
     end
   end
 
