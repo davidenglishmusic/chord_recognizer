@@ -24,4 +24,11 @@ RSpec.describe Theorist do
       expect(Theorist.create_chord(['c', 0]).pitches).to eql([0])
     end
   end
+
+  describe '#identify' do
+    it 'classifies the chord as a cluster if it does not recognize it' do
+      cluster_chord = Theorist.create_chord([0, 1, 2, 9, 10])
+      expect(Theorist.identify(cluster_chord)).to eql('tone cluster')
+    end
+  end
 end
