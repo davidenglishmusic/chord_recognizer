@@ -35,5 +35,20 @@ RSpec.describe Theorist do
       unison_chord = Theorist.create_chord([0, 'c'])
       expect(Theorist.identify(unison_chord)).to eql('unison')
     end
+
+    it 'classifies a major second correctly' do
+      dyad_chord = Theorist.create_chord([9, 11])
+      expect(Theorist.identify(dyad_chord)).to eql('major second')
+    end
+
+    it 'classifies a tritone correctly' do
+      dyad_chord = Theorist.create_chord([1, 7])
+      expect(Theorist.identify(dyad_chord)).to eql('tritone')
+    end
+
+    it 'classifies a minor sixth correctly' do
+      dyad_chord = Theorist.create_chord(['d', 'b flat'])
+      expect(Theorist.identify(dyad_chord)).to eql('minor sixth')
+    end
   end
 end
