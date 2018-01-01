@@ -38,6 +38,21 @@ class Theorist
       'c flat' => 11
     }.freeze
 
+  INTERVAL_MAP =
+    {
+      1 => 'minor second',
+			2 => 'major second',
+      3 => 'minor third',
+      4 => 'major third',
+      5 => 'perfect fourth',
+      6 => 'tritone',
+      7 => 'perfect fifth',
+      8 => 'minor sixth',
+      9 => 'major sixth',
+      10 => 'minor seventh',
+      11 => 'major seventh'
+    }.freeze
+
   def self.pitch_to_number(pitch)
     PITCH_NUMBER_MAP[pitch]
   end
@@ -54,10 +69,14 @@ class Theorist
   end
 
   def self.identify(chord)
-		if chord.pitches.length == 1
-			'unison'
-		else
-    	'tone cluster'
-		end
+    if chord.pitches.length == 2
+      interval = chord.pitches.first - chord.pitches.last
+      interval = chord.pitches.last - chord.pitches.first if INTERVAL_MAP[interval].nil?
+      INTERVAL_MAP[interval]
+    elsif chord.pitches.length == 1
+      'unison'
+    else
+      'tone cluster'
+    end
   end
 end
