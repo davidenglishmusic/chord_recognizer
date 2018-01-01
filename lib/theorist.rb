@@ -52,4 +52,8 @@ class Theorist
     end
     Chord.new(pitch_numbers.uniq.sort)
   end
+
+  def self.identify(_chord)
+    'tone cluster'
+  end
 end
