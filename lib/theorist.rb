@@ -53,7 +53,11 @@ class Theorist
     Chord.new(pitch_numbers.uniq.sort)
   end
 
-  def self.identify(_chord)
-    'tone cluster'
+  def self.identify(chord)
+		if chord.pitches.length == 1
+			'unison'
+		else
+    	'tone cluster'
+		end
   end
 end
