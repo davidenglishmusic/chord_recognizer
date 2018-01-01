@@ -10,4 +10,18 @@ RSpec.describe Theorist do
       expect(Theorist.pitch_to_number('fb')).to eql(4)
     end
   end
+
+  describe '#create_chord' do
+    it 'creates a chord from numbers' do
+      expect(Theorist.create_chord([5, 9, 0]).pitches).to match_array([0, 5, 9])
+    end
+
+    it 'creates a chord from named pitches' do
+      expect(Theorist.create_chord(['a flat', 'c', 'd#']).pitches).to match_array([0, 3, 8])
+    end
+
+    it 'creates a chord with no duplicate pitches' do
+      expect(Theorist.create_chord(['c', 0]).pitches).to eql([0])
+    end
+  end
 end
