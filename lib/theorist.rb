@@ -44,10 +44,10 @@ class Theorist
 
   def self.create_chord(pitches)
     pitch_numbers = pitches.map do |pitch|
-      unless pitch.is_a? Integer
-        pitch_to_number(pitch)
-      else
+      if pitch.is_a? Integer
         pitch
+      else
+        pitch_to_number(pitch)
       end
     end
     Chord.new(pitch_numbers.uniq.sort)
