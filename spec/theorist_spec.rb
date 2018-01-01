@@ -30,5 +30,10 @@ RSpec.describe Theorist do
       cluster_chord = Theorist.create_chord([0, 1, 2, 9, 10])
       expect(Theorist.identify(cluster_chord)).to eql('tone cluster')
     end
+
+    it 'classifies the chord as a unison if it only contains one pitch' do
+      unison_chord = Theorist.create_chord([0, 'c'])
+      expect(Theorist.identify(unison_chord)).to eql('unison')
+    end
   end
 end
