@@ -67,4 +67,12 @@ RSpec.describe Theorist do
         .to match_array([9, 13, 16])
     end
   end
+
+  describe '#interval_pattern' do
+    it 'returns the interval pattern of a triad' do
+      triad_chord = Theorist.create_chord(%w[c e g])
+      expect(Theorist.interval_pattern(triad_chord.pitches))
+        .to match_array([4, 7])
+    end
+  end
 end
