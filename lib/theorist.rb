@@ -92,4 +92,8 @@ class Theorist
     end
     combinations
   end
+
+  def self.smallest_triad(pitches)
+    pitches_combinations(pitches).min_by { |combination| combination[2] - combination[1] }
+  end
 end
