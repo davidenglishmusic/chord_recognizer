@@ -53,6 +53,16 @@ class Theorist
       11 => 'major seventh'
     }.freeze
 
+  TRIAD_INTERVAL_MAP =
+    {
+      [4, 7] => 'major',
+      [3, 7] => 'minor',
+      [3, 6] => 'diminished',
+      [4, 8] => 'augmented',
+      [2, 7] => 'sus2',
+      [5, 7] => 'sus4'
+    }.freeze
+
   def self.pitch_to_number(pitch)
     PITCH_NUMBER_MAP[pitch]
   end
@@ -69,7 +79,11 @@ class Theorist
   end
 
   def self.identify(chord)
-    if chord.pitches.length == 2
+    if chord.pitches.length == 3
+      result = TRIAD_INTERVAL_MAP[interval_pattern(smallest_triad(chord.pitches))]
+      return result + ' triad' if result
+      'tone cluster'
+    elsif chord.pitches.length == 2
       interval = chord.pitches.first - chord.pitches.last
       interval = chord.pitches.last - chord.pitches.first if INTERVAL_MAP[interval].nil?
       INTERVAL_MAP[interval]
