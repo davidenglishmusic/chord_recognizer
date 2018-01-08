@@ -79,4 +79,17 @@ class Theorist
       'tone cluster'
     end
   end
+
+  def self.pitches_combinations(pitches)
+    combinations = []
+    pitches.length.times do |i|
+      combination = pitches.map { |pitch| pitch }
+      i.times do
+        combination[0] = combination[0] + 12
+        combination.rotate!
+      end
+      combinations.push(combination)
+    end
+    combinations
+  end
 end
