@@ -50,6 +50,11 @@ RSpec.describe Theorist do
       dyad_chord = Theorist.create_chord(['d', 'b flat'])
       expect(Theorist.identify(dyad_chord)).to eql('minor sixth')
     end
+
+    it 'classifies a major triad correctly' do
+      major_triad = Theorist.create_chord(['d', 'f#', 'a'])
+      expect(Theorist.identify(major_triad)).to eql('major triad')
+    end
   end
 
   describe '#pitches_combinations' do
