@@ -59,4 +59,12 @@ RSpec.describe Theorist do
         .to match_array([[2, 7, 10], [7, 10, 14], [10, 14, 19]])
     end
   end
+
+  describe '#smallest_triad' do
+    it 'returns the smallest combination of a triad' do
+      triad_chord = Theorist.create_chord(%w[e a c#])
+      expect(Theorist.smallest_triad(triad_chord.pitches))
+        .to match_array([9, 13, 16])
+    end
+  end
 end
