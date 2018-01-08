@@ -96,4 +96,9 @@ class Theorist
   def self.smallest_triad(pitches)
     pitches_combinations(pitches).min_by { |combination| combination[2] - combination[1] }
   end
+
+  def self.interval_pattern(pitches)
+    root = pitches.first
+    pitches.map { |pitch| pitch - root unless pitch == root }.compact
+  end
 end
