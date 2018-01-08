@@ -51,4 +51,12 @@ RSpec.describe Theorist do
       expect(Theorist.identify(dyad_chord)).to eql('minor sixth')
     end
   end
+
+  describe '#pitches_combinations' do
+    it 'returns the rotated combinations of the chord' do
+      triad_chord = Theorist.create_chord(%w[d g bb])
+      expect(Theorist.pitches_combinations(triad_chord.pitches))
+        .to match_array([[2, 7, 10], [7, 10, 14], [10, 14, 19]])
+    end
+  end
 end
