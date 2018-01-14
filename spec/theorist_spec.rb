@@ -60,6 +60,16 @@ RSpec.describe Theorist do
       minor_triad = Theorist.create_chord(['b', 'f#', 'd'])
       expect(Theorist.identify(minor_triad)).to eql('minor triad')
     end
+
+    it 'itentifies a diminished triad correctly' do
+      diminished_triad = Theorist.create_chord(%w[a c eb])
+      expect(Theorist.identify(diminished_triad)).to eql('diminished triad')
+    end
+
+    it 'itentifies an augmented triad correctly' do
+      augmented_triad = Theorist.create_chord(%w[b g eb])
+      expect(Theorist.identify(augmented_triad)).to eql('augmented triad')
+    end
   end
 
   describe '#pitches_combinations' do
