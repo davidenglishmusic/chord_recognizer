@@ -71,9 +71,29 @@ RSpec.describe Theorist do
       expect(Theorist.identify(augmented_triad)).to eql('augmented triad')
     end
 
-    it 'itentifies a major seventh correctly' do
+    it 'itentifies a major seventh chord correctly' do
       major_seventh_chord = Theorist.create_chord(%w[c e g b])
       expect(Theorist.identify(major_seventh_chord)).to eql('major seventh chord')
+    end
+
+    it 'itentifies a major minor seventh chord correctly' do
+      major_minor_seventh_chord = Theorist.create_chord(%w[bb d f ab])
+      expect(Theorist.identify(major_minor_seventh_chord)).to eql('major minor seventh chord')
+    end
+
+    it 'itentifies a minor seventh chord correctly' do
+      minor_seventh_chord = Theorist.create_chord(%w[g bb d f])
+      expect(Theorist.identify(minor_seventh_chord)).to eql('minor seventh chord')
+    end
+
+    it 'itentifies a half diminished chord seventh correctly' do
+      minor_seventh_chord = Theorist.create_chord(%w[c g# f d])
+      expect(Theorist.identify(minor_seventh_chord)).to eql('half diminished seventh chord')
+    end
+
+    it 'itentifies a diminished seventh chord correctly' do
+      minor_seventh_chord = Theorist.create_chord(%w[gb c eb a])
+      expect(Theorist.identify(minor_seventh_chord)).to eql('diminished seventh chord')
     end
   end
 
