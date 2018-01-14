@@ -70,6 +70,11 @@ RSpec.describe Theorist do
       augmented_triad = Theorist.create_chord(%w[b g eb])
       expect(Theorist.identify(augmented_triad)).to eql('augmented triad')
     end
+
+    it 'itentifies a major seventh correctly' do
+      major_seventh_chord = Theorist.create_chord(%w[c e g b])
+      expect(Theorist.identify(major_seventh_chord)).to eql('major seventh chord')
+    end
   end
 
   describe '#pitches_combinations' do
