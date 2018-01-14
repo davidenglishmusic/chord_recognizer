@@ -94,6 +94,10 @@ class Theorist
     end
   end
 
+  def self.smallest_triad(pitches)
+    pitches_combinations(pitches).min_by { |combination| combination[2] - combination[0] }
+  end
+
   def self.pitches_combinations(pitches)
     combinations = []
     pitches.length.times do |i|
@@ -105,10 +109,6 @@ class Theorist
       combinations.push(combination)
     end
     combinations
-  end
-
-  def self.smallest_triad(pitches)
-    pitches_combinations(pitches).min_by { |combination| combination[2] - combination[1] }
   end
 
   def self.interval_pattern(pitches)
