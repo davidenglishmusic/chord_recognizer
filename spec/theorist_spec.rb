@@ -93,6 +93,14 @@ RSpec.describe Theorist do
     end
   end
 
+  describe '#largest_chord' do
+    it 'returns the smallest combination of a chord' do
+      seventh_chord = Theorist.create_chord(%w[a d f# c#])
+      expect(Theorist.largest_chord(seventh_chord.pitches))
+        .to match_array([2, 6, 9, 13])
+    end
+  end
+
   describe '#interval_pattern' do
     it 'returns the interval pattern of a triad' do
       triad_chord = Theorist.create_chord(%w[c e g])
