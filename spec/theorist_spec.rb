@@ -85,10 +85,10 @@ RSpec.describe Theorist do
     end
   end
 
-  describe '#smallest_triad' do
-    it 'returns the smallest combination of a triad' do
+  describe '#smallest_chord' do
+    it 'returns the smallest combination of a chord' do
       triad_chord = Theorist.create_chord(%w[e a c#])
-      expect(Theorist.smallest_triad(triad_chord.pitches))
+      expect(Theorist.smallest_chord(triad_chord.pitches))
         .to match_array([9, 13, 16])
     end
   end

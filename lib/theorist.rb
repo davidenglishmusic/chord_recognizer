@@ -94,7 +94,7 @@ class Theorist
       return result + ' seventh chord' if result
       'tone cluster'
     when 3
-      result = TRIAD_INTERVAL_MAP[interval_pattern(smallest_triad(chord.pitches))]
+      result = TRIAD_INTERVAL_MAP[interval_pattern(smallest_chord(chord.pitches))]
       return result + ' triad' if result
       'tone cluster'
     when 2
@@ -108,8 +108,8 @@ class Theorist
     end
   end
 
-  def self.smallest_triad(pitches)
-    pitches_combinations(pitches).min_by { |combination| combination[2] - combination[0] }
+  def self.smallest_chord(pitches)
+    pitches_combinations(pitches).min_by { |combination| combination.last - combination.first }
   end
 
   def self.largest_chord(pitches)
