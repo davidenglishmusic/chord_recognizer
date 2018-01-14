@@ -63,6 +63,15 @@ class Theorist
       [5, 7] => 'sus4'
     }.freeze
 
+  SEVENTH_CHORD_INTERVAL_MAP =
+    {
+      [4, 7, 11] => 'major',
+      [4, 7, 10] => 'major minor',
+      [3, 7, 10] => 'minor',
+      [3, 6, 10] => 'half dimished',
+      [3, 6, 9] => 'diminished'
+    }.freeze
+
   def self.pitch_to_number(pitch)
     PITCH_NUMBER_MAP[pitch]
   end
@@ -80,6 +89,10 @@ class Theorist
 
   def self.identify(chord)
     case chord.pitches.length
+    when 4
+      result = SEVENTH_CHORD_INTERVAL_MAP[interval_pattern(largest_chord(chord.pitches))]
+      return result + ' seventh chord' if result
+      'tone cluster'
     when 3
       result = TRIAD_INTERVAL_MAP[interval_pattern(smallest_triad(chord.pitches))]
       return result + ' triad' if result
@@ -97,6 +110,10 @@ class Theorist
 
   def self.smallest_triad(pitches)
     pitches_combinations(pitches).min_by { |combination| combination[2] - combination[0] }
+  end
+
+  def self.largest_chord(pitches)
+    pitches_combinations(pitches).max_by { |combination| combination.last - combination.first }
   end
 
   def self.pitches_combinations(pitches)
