@@ -68,7 +68,7 @@ class Theorist
       [4, 7, 11] => 'major',
       [4, 7, 10] => 'major minor',
       [3, 7, 10] => 'minor',
-      [3, 6, 10] => 'half dimished',
+      [3, 6, 10] => 'half diminished',
       [3, 6, 9] => 'diminished'
     }.freeze
 
