@@ -26,32 +26,32 @@ RSpec.describe Theorist do
   end
 
   describe '#identify' do
-    it 'classifies the chord as a cluster if it does not recognize it' do
+    it 'itentifies the chord as a cluster if it does not recognize it' do
       cluster_chord = Theorist.create_chord([0, 1, 2, 9, 10])
       expect(Theorist.identify(cluster_chord)).to eql('tone cluster')
     end
 
-    it 'classifies the chord as a unison if it only contains one pitch' do
+    it 'itentifies the chord as a unison if it only contains one pitch' do
       unison_chord = Theorist.create_chord([0, 'c'])
       expect(Theorist.identify(unison_chord)).to eql('unison')
     end
 
-    it 'classifies a major second correctly' do
+    it 'itentifies a major second correctly' do
       dyad_chord = Theorist.create_chord([9, 11])
       expect(Theorist.identify(dyad_chord)).to eql('major second')
     end
 
-    it 'classifies a tritone correctly' do
+    it 'itentifies a tritone correctly' do
       dyad_chord = Theorist.create_chord([1, 7])
       expect(Theorist.identify(dyad_chord)).to eql('tritone')
     end
 
-    it 'classifies a minor sixth correctly' do
+    it 'itentifies a minor sixth correctly' do
       dyad_chord = Theorist.create_chord(['d', 'b flat'])
       expect(Theorist.identify(dyad_chord)).to eql('minor sixth')
     end
 
-    it 'classifies a major triad correctly' do
+    it 'itentifies a major triad correctly' do
       major_triad = Theorist.create_chord(['d', 'f#', 'a'])
       expect(Theorist.identify(major_triad)).to eql('major triad')
     end
