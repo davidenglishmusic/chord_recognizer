@@ -79,15 +79,16 @@ class Theorist
   end
 
   def self.identify(chord)
-    if chord.pitches.length == 3
+    case chord.pitches.length
+    when 3
       result = TRIAD_INTERVAL_MAP[interval_pattern(smallest_triad(chord.pitches))]
       return result + ' triad' if result
       'tone cluster'
-    elsif chord.pitches.length == 2
+    when 2
       interval = chord.pitches.first - chord.pitches.last
       interval = chord.pitches.last - chord.pitches.first if INTERVAL_MAP[interval].nil?
       INTERVAL_MAP[interval]
-    elsif chord.pitches.length == 1
+    when 1
       'unison'
     else
       'tone cluster'
