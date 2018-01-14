@@ -55,6 +55,11 @@ RSpec.describe Theorist do
       major_triad = Theorist.create_chord(['d', 'f#', 'a'])
       expect(Theorist.identify(major_triad)).to eql('major triad')
     end
+
+    it 'itentifies a minor triad correctly' do
+      minor_triad = Theorist.create_chord(['b', 'f#', 'd'])
+      expect(Theorist.identify(minor_triad)).to eql('minor triad')
+    end
   end
 
   describe '#pitches_combinations' do
